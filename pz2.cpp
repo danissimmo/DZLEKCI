@@ -218,11 +218,11 @@ int main()
 	{
 		cout << "Error while initiating array" << endl << e.what() << endl;
 	}
-	catch (out_of_range e)
+    	catch (out_of_range e)
 	{
 		cout << "Error while accessing array element" << endl << e.what() << endl;
 	}
-	catch (invalid_argument e)
+    	catch (invalid_argument e)
 	{
 		cout << "Error while setting arguments" << endl << e.what() << endl;
 	}
