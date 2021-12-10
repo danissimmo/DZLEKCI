@@ -36,41 +36,22 @@ public:
     }
     void set(int num, T value)
     {
-        if ((num >= 0) && (num < l))
-        {
-            if ((value > -100) && (value < 100))
-            {
-                arr[num] = value;
-            }
-            else
-            {
-                cout << "Error value" << endl;
-            }
-        }
-        else
-        {
-            cout << "Error index" << endl;
-        }
-
+     if ((num < 0) || (num >= l)) throw out_of_range("Out of array (set)");
+       arr[num] = value;   
     }
-    int get(int num)
+    T get(int num)
     {
-        if ((num >= 0) && (num < l))
-        {
-            return arr[num];
-        }
-        else
-        {
-            cout << "Error index" << endl;
-        }
+        if ((num < 0) || (num >= l)) throw out_of_range("Out of array (get)");
+       return arr[num];
     }
     void dobav(T value)
     {
-        T* new_mas = new T[l + 1];
+		T* new_mas = new T[l + 1];
         memcpy(new_mas, arr, l * sizeof(T));
         new_mas[l] = value;
 
         l++;
+        delete[] arr;
         arr = new_mas;
     }
 
@@ -154,6 +135,7 @@ public:
 		new_mas[l] = value;
 
 		l++;
+		delete[]arr;
 		arr = new_mas;
 	}
 
@@ -220,4 +202,5 @@ int main()
     {
         cout << "Error while setting arguments" << endl << e.what() << endl;
     }
+    return 0;
 }
